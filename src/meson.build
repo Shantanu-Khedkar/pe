@@ -24,7 +24,7 @@ gnome.compile_resources('pe',
 python = import('python')
 
 conf = configuration_data()
-conf.set('PYTHON', python.find_installation('python3').path())
+conf.set('PYTHON', python.find_installation('python3').full_path())
 conf.set('VERSION', meson.project_version())
 if get_option('profile') == 'testing'
   conf.set('TESTING', '1')
