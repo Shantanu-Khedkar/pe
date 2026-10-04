@@ -26,9 +26,8 @@ def main(version, testing):
             self.connect('open', self.handle_upi_links)
         
         def about(self, *args):
-            about_window = Gtk.Builder().new_from_resource('/net/hemish/pe/ui/about.ui').get_object("about_window")
-            about_window.set_transient_for(self.props.active_window)
-            about_window.present()
+            about_dialog = Gtk.Builder().new_from_resource('/net/hemish/pe/ui/about.ui').get_object("about_dialog")
+            about_dialog.present(self.props.active_window)
 
         def do_activate(self):
             win = self.props.active_window
