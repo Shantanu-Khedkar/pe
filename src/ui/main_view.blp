@@ -7,10 +7,9 @@ Gtk.Box main_view_box{
   orientation: vertical;
 
   Adw.HeaderBar main_view_headerbar {
-      centering-policy: strict;
-      title-widget: Adw.ViewSwitcherTitle main_view_switcher_title {
-        title: "Pe";
+      title-widget: Adw.ViewSwitcher main_view_switcher_title {
         stack: main_view_stack;
+        policy: wide;
       };
       
       [end]
@@ -135,9 +134,8 @@ Gtk.Box main_view_box{
                 
   }
   
-  Adw.ViewSwitcherBar main_view_switcher {
+  Adw.ViewSwitcherBar main_view_switcherbar {
     valign: end;
     stack: main_view_stack;
-    reveal: bind main_view_switcher_title.title-visible;
   }
 }
