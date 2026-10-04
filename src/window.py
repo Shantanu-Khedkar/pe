@@ -77,22 +77,20 @@ class ApplicationWindow(Adw.ApplicationWindow):
     #---------------- balance ---------------#
     def handle_home_check_balance(self, row, *data):
         spinner = Gtk.Spinner()
-
+        child_widget = getattr(self.main_view_home_balance_row, "child_widget", None)
         # Remove existing child widget, e.g. previous spinner or balance label
-        # if any exists
-        try:
+        # if any exist and are added as childeren
+        if (child_widget and child_widget.get_parent() == self.main_view_home_balance_row):
             self.main_view_home_balance_row.remove(self.main_view_home_balance_row.child_widget)
-        except:
-            pass
 
         # Adding and starting spinner
         self.main_view_home_balance_row.child_widget = spinner
         spinner.start()
-        self.main_view_home_balance_row.add_suffix(self.main_view_home_balance_row.child_widget)
+        self.main_view_home_balance_row.add_suffix(spinner)
 
         # Function called when cancel clicked or Esc pressed
         def cancel(*args):
-            # Remove the spinner
+            # Remove the spinner if exists
             self.main_view_home_balance_row.remove(self.main_view_home_balance_row.child_widget)
             
         # Function called when ok is clicked in pin dialog
